@@ -11,15 +11,22 @@ const App = () => {
   const [todoItems, setTodoItems] = useState([]);
 
   const handleNewItem = (itemName, itemDueDate) => {
-    let newTodo = [
-      ...todoItems,
+    // let newTodo = [
+    //   ...todoItems,
+    //   {
+    //     name: itemName,
+    //     dueDate: itemDueDate,  // this code may give older value sometimes if it used for high grade development due to the async code because it directly depents on the current value of the useState so instead of this we can use a method over the setTOdo and change the value directly in it...
+    //   },
+    // ];
+    // setTodoItems(newTodo);
+
+    setTodoItems((currentValue) => [
+      ...currentValue,
       {
         name: itemName,
         dueDate: itemDueDate,
       },
-    ];
-
-    setTodoItems(newTodo);
+    ]);
   };
 
   const handleDelete = (todoItemName) => {
