@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MdAddBox } from "react-icons/md";
 
 const Addtodo = ({onNewItem}) => {
    
-  const [todoName, setTodoName] = useState("")
-  const [todoDate, setTodoDate] = useState("")
+  // const [todoName, setTodoName] = useState("")
+  // const [todoDate, setTodoDate] = useState("")
 
-  const handleName = (e) => {
-      let newTodo = e.target.value;
-      setTodoName(newTodo)
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
+
+  // const handleName = (e) => {
+  //     let newTodo = e.target.value;
+  //     setTodoName(newTodo)
       
-  }
-  const handleDate = (e) => {
-      let newDate = e.target.value;
-      setTodoDate(newDate)
+  // }
+  // const handleDate = (e) => {
+  //     let newDate = e.target.value;
+  //     setTodoDate(newDate)
       
-  }
+  // }
 
   const handleAddButtonClicked = (e) =>{
-    e.preventDefault();
+    e.preventDefault(); 
+    const todoName = todoNameElement.current.value;
+    const todoDate = dueDateElement.current.value;
     onNewItem(todoName,todoDate)
-    setTodoName('');
-    setTodoDate('');
+    todoNameElement.current.value = ''
+    dueDateElement.current.value = ''
   }
 
   return (
@@ -31,14 +36,14 @@ const Addtodo = ({onNewItem}) => {
     >
     <div className="col-6">
       <input type="text" placeholder='Enter TODO Here'
-      value={todoName}
-      onChange={handleName}
+       ref={todoNameElement}
+      
       />
     </div>
     <div className="col-4">
       <input type="date"
-      value={todoDate}
-      onChange={handleDate}
+      
+      ref={dueDateElement}
       />
     </div>
     <div className="col-2">
