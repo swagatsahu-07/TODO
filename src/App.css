@@ -1,0 +1,15 @@
+
+input{
+  width: 100%;
+}
+.TodoItem{
+   text-align: left;
+}
+
+.KgRow{
+  margin: 10px 8px;
+}
+
+.KgButton{
+    min-width: 80px;
+}
