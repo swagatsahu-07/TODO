@@ -1,7 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { MdAddBox } from "react-icons/md";
+import { TodoItemsContext } from './store/todo-items-store';
 
-const Addtodo = ({onNewItem}) => {
+const Addtodo = () => {
+
+  const {addNewItem} = useContext(TodoItemsContext);
    
   // const [todoName, setTodoName] = useState("")
   // const [todoDate, setTodoDate] = useState("")
@@ -24,7 +27,7 @@ const Addtodo = ({onNewItem}) => {
     e.preventDefault(); 
     const todoName = todoNameElement.current.value;
     const todoDate = dueDateElement.current.value;
-    onNewItem(todoName,todoDate)
+    addNewItem(todoName,todoDate)
     todoNameElement.current.value = ''
     dueDateElement.current.value = ''
   }
