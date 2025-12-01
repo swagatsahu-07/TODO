@@ -15,11 +15,20 @@ const App = () => {
     //   ...todoItems,
     //   {
     //     name: itemName,
-    //     dueDate: itemDueDate,  // this code may give older value sometimes if it used for high grade development due to the async code because it directly depents on the current value of the useState so instead of this we can use a method over the setTOdo and change the value directly in it...
+    //     dueDate: itemDueDate,  
     //   },
     // ];
     // setTodoItems(newTodo);
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Using ...todoItems spreads the existing array and adds a new item.
+// But since React state updates are async, directly using todoItems
+// may sometimes give stale values. 
+// That's why we use the functional form of setTodoItems,
+// which ensures we always get the latest state.
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        
     setTodoItems((currentValue) => [
       ...currentValue,
       {
